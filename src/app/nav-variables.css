@@ -1,0 +1,27 @@
+/* ---------- Conic gradient anchors (angle + origin) ---------- */
+:root {
+  --conic-left: from 290deg at center top; /* left wing */
+  --conic-right: from 70deg at center top; /* right wing */
+}
+
+/* ---------- Gradient stops ---------- */
+/* Left wing: transparent -> cyan */
+:root {
+  --glow-left-from: transparent;
+  --glow-left-via: transparent;
+  --glow-left-to: rgba(34, 211, 238, 0.95); /* cyan */
+}
+
+/* Right wing: cyan -> transparent */
+:root {
+  --glow-right-from: rgba(34, 211, 238, 0.95); /* cyan */
+  --glow-right-via: transparent;
+  --glow-right-to: transparent;
+}
+
+/* ---------- Mask gradients ---------- */
+:root {
+  --mask-fade-right: linear-gradient(to_left, white, transparent);   /* fade the right edge */
+  --mask-fade-left:  linear-gradient(to_right, white, transparent);  /* fade the left edge */
+  --mask-fade-bottom: linear-gradient(to_top, white, transparent);   /* fade the bottom */
+}

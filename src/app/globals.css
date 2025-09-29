@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* ---------------------------
+   Torch Glow Backgrounds
+--------------------------- */
+.bg-torch-core {
+  background: radial-gradient(circle, rgba(34,211,238,0.9), rgba(34,211,238,0.2));
+}
+.bg-torch-glow {
+  background: radial-gradient(circle, rgba(34,211,238,0.6), transparent);
+}
+.bg-torch-outer {
+  background: radial-gradient(circle, rgba(34,211,238,0.3), transparent);
+}
+.bg-torch-ambient {
+  background: radial-gradient(circle, rgba(34,211,238,0.15), transparent);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------------------------
+   Torch Glow Animations
+--------------------------- */
+@keyframes torch-flicker {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes torch-pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
+
+.animate-torch-flicker {
+  animation: torch-flicker 3s ease-in-out infinite;
+}
+
+.animate-torch-pulse {
+  animation: torch-pulse 5s ease-in-out infinite;
+}
+
+/* ---------------------------
+   Page Background
+--------------------------- */
+:root {
+  --app-radial: radial-gradient(
+    1200px 600px at 50% -200px,
+    #0b2330 0%,
+    #08101f 40%,
+    #070b14 70%,
+    #050912 100%
+  );
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #070b14;
+  background-image: var(--app-radial);
+  @apply min-h-screen text-white antialiased;
+}
+
+/* 
+/* Animated gradient border */
+@keyframes border-rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+
+
+
+
+
+/* .animated-border {
+  position: relative;
+  width: 200px;
+  background: #111827;
+  cursor: pointer;
+  border-radius: 12px;
+  padding:1rem;
+  text-align: center;
+  box-sizing: content-box ;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-border::after, .animated-border::before{
+  position: absolute;
+  pointer-events: none;
+  background-image: conic-gradient(from var(--angle), transparent 70%,blue);
+  height:calc(100%);
+  width:calc(100%);
+  content: '';
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 10px;
+  animation : spin 3s linear infinite;
+}
+
+
+.animated-border::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}  */
+
+
+
